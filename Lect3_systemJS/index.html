@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Lecture SystemJS and AMD</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <div id="container"></div>
+
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.js" ></script>
+  <script type="text/javascript" src='bower_components/system.js/dist/system.js'></script>
+
+  <script type="text/javascript">
+
+    System.config({
+      transpiler: 'babel',
+        babelOptions: {
+          optional: [
+            "runtime"
+          ]},
+        map: {
+        'babel': 'node_modules/babel-core/browser.js',
+        'jquery': 'bower_components/jquery/dist/jquery.js'
+      }
+    });
+
+    System.import('app/app.js')
+      .then(function (module) {
+        module.start;
+      });    
+    //console.log(app);
+  </script>
+
+
+<h1>Hi!</h1>
+  
+</body>
+</html>
