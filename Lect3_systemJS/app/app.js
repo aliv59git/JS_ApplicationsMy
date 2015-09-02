@@ -15,3 +15,12 @@ import {add, all} from 'app/db.js';
 add('Val');
 add(' Dak');
 console.log(all());
+
+function f() {
+	add(new Date());
+	add($('<br/>'));
+	console.log(all());
+	setTimeout(f, 1000);
+}
+
+f();
