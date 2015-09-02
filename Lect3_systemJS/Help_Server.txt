@@ -1,0 +1,18 @@
+Пускане на сървъра:
+
+
+npm install -g bower
+
+bower install -g system
+
+bower install -g jquery
+
+npm install -g babel-core
+
+npm install -g http-server
+
+node node_modules/http-server/bin/http-server -p 8889
+
+След като е пуснат сървъра да "слухти" на порт 8889, зареждаме страницата през input.html и горе в командния ред вместо http://..... localhost8889 и приложенията тръгват. При правилно конфигуриране на конфиг- файла config.js или System.config... в index.html
+
+
