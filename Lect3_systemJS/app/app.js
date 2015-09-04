@@ -1,9 +1,6 @@
 //jquery
 
-
 alert('Module loaded!');
-
-
 
 import 'bower_components/jquery/dist/jquery.js';
 
@@ -18,7 +15,8 @@ console.log(all());
 
 function f() {
 	add(new Date());
-	add($('<br/>'));
+	add($('<br/>').appendTo(document.body));
+  alert('My NEW_TIME!');
 	console.log(all());
 	setTimeout(f, 1000);
 }

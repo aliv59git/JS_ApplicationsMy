@@ -22,9 +22,9 @@ function add (item){
 }
 
 console.log('DB');
-alert('My new Loder!');
 function all () {
 	console.log('all');
+  alert('My new Loder!');
 	return items.slice();
 }
 

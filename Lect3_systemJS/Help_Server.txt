@@ -1,18 +1,19 @@
-Пускане на сървъра:
+Пускане на сървъра: 
 
+(прaви се еднократно) Отивам в директорията на проекта; Десен бутон на мишката+Shift -> GitBash with prompt $; 
 
 npm install -g bower
 
-bower install -g system
+bower install -g system.js  //in bower_components/system.js/dist/system.js
 
 bower install -g jquery
 
 npm install -g babel-core
 
-npm install -g http-server
+npm install -g http-server  //зареждаме http-server-a
 
-node node_modules/http-server/bin/http-server -p 8889
+node node_modules/http-server/bin/http-server -p 8889  //стартираме http-server-a на порт 8889
 
-След като е пуснат сървъра да "слухти" на порт 8889, зареждаме страницата през input.html и горе в командния ред вместо http://..... localhost8889 и приложенията тръгват. При правилно конфигуриране на конфиг- файла config.js или System.config... в index.html
+След като е пуснат сървъра да "слухти" на порт 8889, зареждаме страницата през input.html и горе в командния ред вместо http://..... localhost8889 и приложенията тръгват. При правилно конфигуриране на конфиг- файла config.js или чрезSystem.config... в index.html
 
 
