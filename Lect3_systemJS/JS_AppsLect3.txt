@@ -1,0 +1,78 @@
+Записки по лекция 3.AMD & System.js Дончо. Втора лекция по темата. 29.08.15 г.
+
+Инсталира в ДОС промпта, който се зарежда с Shit+десен бутон на мишката в текущата директория на проекта (руут дир. на проекта) и избиране на Git Bash. Последователно се инсталират: system.js, jquery, babel-core:
+
+bower install --save system.js
+
+bower install --save jquery
+
+npm init
+
+npm install --save babel-core
+
+После конфигурира system.js с един json обект в .html файла или го изнася в отделен файл config.js. Иначе в script тагове вмъква тези библиотеки, както може и json обекта за конфигуриране на system.js
+
+System.config({
+	transpiler: "babel",
+	babelOptions: {
+		optional: [
+			"runtime"
+		]
+	},
+	map: {
+		babel: 'node_modules/babel-core/browser.js',
+		jquery: 'bower_components/jquery/dist/jquery.js'
+	}
+});
+
+ls - проверява какво има в директорията/т.е. като командата dir
+
+След като е зареден system.js модулите се зареждат с командата (като се изпуска разширението .js):
+
+System.import(app/app.js) който зарежда модула от файла /app/app.js Във всеки файл има само един модул. Самият файл е модула. Като се зарежда по посочения начин. Тези модули се стартират с т.н. ajax request-и.  
+
+Инсталира още един npm пакет 
+
+npm install --save http-server
+
+
+В един момент влиза в интернет, търси find mdn
+
+Намира го като документация, намира Array.prototype.find() и там намира Polyfill, копира го и го поставя в един файл array.js, който импортва в db.js - import 'app/polyfills/array.js'; Тогава find от кода ще работи коректно и на други браузъри, където не се поддържа по условие в момента. 
+От този сървър ние можемм да правим ajax request-и и тогава ще върви и в Chrome - т.е. когато заредим страницата през този сървър. За да пуснем сървъра след като е инсталиран, използваме командата:
+
+node node_modules/http-server/bin/http-server -p 8123 //т.е. пускаме сървъра на порт 8123 - Localhost8123
+
+system.js ни дава импорт и експорт на модули. //import	    //export
+
+Във файла app.js също можем да импортваме модули примерно библиотеки след като са инсталирани. И по този начин той си ги намира и си работи с тях. Например:   inport 'bower_components/juery/dist/jquery.js'; 
+
+inport Handlebars from 'bower_components/handlebars/handlebars.js';
+
+А също така след като е готов модула/файла можем да го експортваме, като експортваме отделни функции от него или целия модул. Примерно имаме една функциика в модула:
+
+var templateString = '<li><strong>Item - #{{this}}</strong></li>';
+var template = Handlebars.compile(templateString);
+
+function render(items){
+	var $list = $('<ul />');
+	items.map(template)
+		.forEach(function(listItem){
+		$list.append(listItem);
+	});
+	return $list; 
+	}
+
+var $list = render([1, 2, 3, 4]);
+$list.appendTo(document.body);
+
+Инсталира и handlebars: bower install --save handlebars и го вмъква в горния край на модула подобно на jquery
+
+//in .html //  System.import('app/app.js')
+			.then(function (app) {
+			var $list = app.render([1, 2, 3, 4]);
+			$list.appendTo(document.body);
+		});
+Но трябва в app.js накрая да експортваме модула с командата: export {render}. Така работи с модула. 
+
+
